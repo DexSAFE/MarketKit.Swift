@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-class ChartStart: ImmutableMappable {
+class CoinPriceStart: ImmutableMappable {
     let timestamp: TimeInterval
 
     init(timestamp: TimeInterval) {

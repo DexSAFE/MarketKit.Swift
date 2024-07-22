@@ -3,12 +3,11 @@ import Foundation
 public enum HsChartHelper {
     static func pointInterval(_ interval: HsTimePeriod) -> HsPointTimePeriod {
         switch interval {
-        case .day1, .hour24: return .minute30
+        case .day1: return .minute30
         case .week1: return .hour4
         case .week2: return .hour8
-        case .month1, .month3, .month6: return .day1
-        case .year1, .year2: return .week1
-        case .year5: return .month1
+        case .year2: return .week1
+        default: return .day1
         }
     }
 
@@ -46,9 +45,6 @@ public enum HsChartHelper {
             if yearCount >= 2 {
                 intervals.append(.year2)
             }
-            if yearCount >= 5 {
-                intervals.append(.year5)
-            }
         }
 
         return intervals
@@ -65,12 +61,9 @@ public enum HsChartHelper {
         if seconds <= .days(14) {
             return .hour8
         }
-        if seconds <= .days(365) {
+        if seconds <= .days(2 * 365) {
             return .day1
         }
-        if seconds <= .days(5 * 365) {
-            return .week1
-        }
-        return .month1
+        return .week1
     }
 }

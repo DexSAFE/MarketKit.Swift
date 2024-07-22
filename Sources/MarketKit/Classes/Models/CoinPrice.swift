@@ -7,20 +7,18 @@ public class CoinPrice: Record {
     public let coinUid: String
     public let currencyCode: String
     public let value: Decimal
-    public let diff24h: Decimal?
-    public let diff1d: Decimal?
+    public let diff: Decimal?
     public let timestamp: TimeInterval
 
     enum Columns: String, ColumnExpression, CaseIterable {
-        case coinUid, currencyCode, value, diff24h, diff1d, timestamp
+        case coinUid, currencyCode, value, diff, timestamp
     }
 
-    init(coinUid: String, currencyCode: String, value: Decimal, diff24h: Decimal?, diff1d: Decimal?, timestamp: TimeInterval) {
+    init(coinUid: String, currencyCode: String, value: Decimal, diff: Decimal?, timestamp: TimeInterval) {
         self.coinUid = coinUid
         self.currencyCode = currencyCode
         self.value = value
-        self.diff24h = diff24h
-        self.diff1d = diff1d
+        self.diff = diff
         self.timestamp = timestamp
 
         super.init()
@@ -34,8 +32,7 @@ public class CoinPrice: Record {
         coinUid = row[Columns.coinUid]
         currencyCode = row[Columns.currencyCode]
         value = row[Columns.value]
-        diff24h = row[Columns.diff24h]
-        diff1d = row[Columns.diff1d]
+        diff = row[Columns.diff]
         timestamp = row[Columns.timestamp]
 
         try super.init(row: row)
@@ -45,8 +42,7 @@ public class CoinPrice: Record {
         container[Columns.coinUid] = coinUid
         container[Columns.currencyCode] = currencyCode
         container[Columns.value] = value
-        container[Columns.diff24h] = diff24h
-        container[Columns.diff1d] = diff1d
+        container[Columns.diff] = diff
         container[Columns.timestamp] = timestamp
     }
 
@@ -57,6 +53,6 @@ public class CoinPrice: Record {
 
 extension CoinPrice: CustomStringConvertible {
     public var description: String {
-        "CoinPrice [coinUid: \(coinUid); currencyCode: \(currencyCode); value: \(value); diff24h: \(diff24h.map { "\($0)" } ?? "nil"); timestamp: \(timestamp)]"
+        "CoinPrice [coinUid: \(coinUid); currencyCode: \(currencyCode); value: \(value); diff: \(diff.map { "\($0)" } ?? "nil"); timestamp: \(timestamp)]"
     }
 }
