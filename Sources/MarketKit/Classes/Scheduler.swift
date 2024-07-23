@@ -27,7 +27,7 @@ class Scheduler {
     private var syncInProgress = false
     private var expirationNotified = false
 
-    private let queue = DispatchQueue(label: "io.horizontalsystems.market_kit.scheduler", qos: .utility)
+    private let queue = DispatchQueue(label: "market_kit.scheduler", qos: .utility)
 
     init(provider: ISchedulerProvider, reachabilityManager: ReachabilityManager, bufferInterval: TimeInterval = 5, logger: Logger? = nil) {
         self.provider = provider
