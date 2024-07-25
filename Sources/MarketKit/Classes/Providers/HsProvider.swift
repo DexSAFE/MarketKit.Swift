@@ -78,11 +78,11 @@ extension HsProvider {
     // Coins
 
     func allCoins() async throws -> [Coin] {
-        try await networkManager.fetch(url: "\(baseUrl)/v1/coins/list", method: .get, headers: headers())
+        try await networkManager.fetch(url: "https://analitics.0xlabs.io/v1/coins/list", method: .get, headers: headers())
     }
 
     func allBlockchainRecords() async throws -> [BlockchainRecord] {
-        try await networkManager.fetch(url: "\(baseUrl)/v1/blockchains/list", method: .get, headers: headers())
+        try await networkManager.fetch(url: "https://analitics.0xlabs.io/v1/blockchains/list", method: .get, headers: headers())
     }
 
     func allTokenRecords() async throws -> [TokenRecord] {
