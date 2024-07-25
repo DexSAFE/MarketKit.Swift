@@ -82,8 +82,7 @@ extension HsProvider {
     }
 
     func allBlockchainRecords() async throws -> [BlockchainRecord] {
-        try await networkManager.fetch(url: "https://bridge.dexnetchain.com/image/blockchains.json", method: .get, headers: headers())
-//        try await networkManager.fetch(url: "\(baseUrl)/v1/blockchains/list", method: .get, headers: headers())
+        try await networkManager.fetch(url: "\(baseUrl)/v1/blockchains/list", method: .get, headers: headers())
     }
 
     func allTokenRecords() async throws -> [TokenRecord] {
